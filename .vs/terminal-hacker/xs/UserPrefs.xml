@@ -2,8 +2,19 @@
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Hacker.cs">
     <Files>
-      <File FileName="Assets/Hacker.cs" Line="11" Column="5" />
+      <File FileName="Assets/Hacker.cs" Line="53" Column="18" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="terminal-hacker" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Hacker.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
