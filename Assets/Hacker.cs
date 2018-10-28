@@ -5,8 +5,10 @@ using UnityEngine;
 public class Hacker : MonoBehaviour
 {
     // Game configuration data
+    private const string menuHint = "type \"menu\" to return to menu";
     string[] level1Passwords = { "12345", "easy", "laptop1", "donthackthis", "veryhard" };
     string[] level2Passwords = { "HardMode", "SuperVirus", "pathoGen", "H4cker", "200billi" };
+    string[] level3Passwords = { "W0w", "gr1ndm0de", "f4rtc4nn0n", "T4ke4H1ke", "supe3r d1ff1cult p4$$w0rd" };
 
 
     // Game state
@@ -33,7 +35,7 @@ public class Hacker : MonoBehaviour
         Terminal.WriteLine("Hello!");
         Terminal.WriteLine("Let's keep this simple.");
         Terminal.WriteLine("I'll test your abilites to see if your worthy to join the team.");
-        Terminal.WriteLine("Press Ctrl + P to start...");
+        Terminal.WriteLine("Type a level number to start");
     }
 
     // Handle user input
@@ -55,7 +57,7 @@ public class Hacker : MonoBehaviour
     // Handles input for main menu
     private void RunMainMenu(string input)
     {
-        bool isValidLevelNumber = (input == "1" || input == "2");
+        bool isValidLevelNumber = (input == "1" || input == "2" || input == "3");
         if (isValidLevelNumber)
         {
             level = int.Parse(input);
@@ -68,7 +70,7 @@ public class Hacker : MonoBehaviour
     {
         Terminal.ClearScreen();
         SetRandomPassword();
-        Terminal.WriteLine("type \"menu\" to return to menu");
+        Terminal.WriteLine(menuHint);
         Terminal.WriteLine("Enter password, hint: " + password.Anagram());
     }
 
@@ -84,6 +86,10 @@ public class Hacker : MonoBehaviour
             case 2:
                 int index2 = Random.Range(0, level2Passwords.Length);
                 password = level2Passwords[index2];
+                break;
+            case 3:
+                int index3 = Random.Range(0, level3Passwords.Length);
+                password = level3Passwords[index3];
                 break;
             default:
                 Debug.LogError("Invalid level number");
@@ -110,7 +116,7 @@ public class Hacker : MonoBehaviour
         Terminal.ClearScreen();
         Terminal.WriteLine("Access granted...");
         ShowLevelReward();
-        Terminal.WriteLine("type \"menu\" to return to menu");
+        Terminal.WriteLine(menuHint);
     }
 
     private void ShowLevelReward()
@@ -137,10 +143,19 @@ public class Hacker : MonoBehaviour
     /|\
                 ");
                 break;
+            case 3:
+                Terminal.WriteLine("You have gained access to the button of mass descruction!!");
+                Terminal.WriteLine(@"
+  _______
+ |__/-\[]|
+ |  (_)  |
+ |_______|
+    /|\
+                ");
+                break;
             default:
                 Debug.LogError("Invalid");
                 break;
         }
-        Terminal.WriteLine("Return to main menu");
     }
 }
