@@ -59,24 +59,23 @@ public class Hacker : MonoBehaviour
         if (isValidLevelNumber)
         {
             level = int.Parse(input);
-            StartGame();
-        }
-        else if (input == "007")
-        {
-            Terminal.WriteLine("Please select a level Mr. Bond!");
-        }
-        else
-        {
-            Terminal.WriteLine("Please choose a valid level.");
+            AskForPassword();
         }
     }
 
     // Starts the game 
-    void StartGame()
+    void AskForPassword()
     {
         Terminal.ClearScreen();
+        SetRandomPassword();
+        Terminal.WriteLine("type \"menu\" to return to menu");
+        Terminal.WriteLine("Enter password, hint: " + password.Anagram());
+    }
+
+    private void SetRandomPassword()
+    {
         currentScreen = Screen.Password;
-        switch(level)
+        switch (level)
         {
             case 1:
                 int index1 = Random.Range(0, level1Passwords.Length);
@@ -90,7 +89,6 @@ public class Hacker : MonoBehaviour
                 Debug.LogError("Invalid level number");
                 break;
         }
-        Terminal.WriteLine("Please enter password: ");
     }
 
     // Handles input for password menu
@@ -102,7 +100,7 @@ public class Hacker : MonoBehaviour
         }
         else
         {
-            Terminal.WriteLine("Denied...");
+            AskForPassword();
         }
     }
 
@@ -112,6 +110,7 @@ public class Hacker : MonoBehaviour
         Terminal.ClearScreen();
         Terminal.WriteLine("Access granted...");
         ShowLevelReward();
+        Terminal.WriteLine("type \"menu\" to return to menu");
     }
 
     private void ShowLevelReward()
